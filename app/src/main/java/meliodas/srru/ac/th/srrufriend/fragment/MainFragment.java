@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.zip.Inflater;
 
@@ -19,7 +20,20 @@ public class MainFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
 
 //        Register Controller
+        TextView textView = getView().findViewById(R.id.txtNewRegister);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+//                Replace Fragment
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentMainFragment, new RegisterFeagment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }   // Main Method
 
     @Nullable
